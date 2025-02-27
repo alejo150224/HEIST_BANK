@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LUXURY STAY - Reservas de Hotel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    @font-face {
+      font-family: titulo1;
+      src: url("fonts/Quicksilver.ttf");
+    }
+    @font-face {
+      font-family: titulo2;
+      src: url("fonts/SIMPLIFICA Typeface.ttf");
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    :root {
+      --gradient: linear-gradient(45deg, #ff7c7d, #ffda67);
+      --card: #272524;
+      --dashboard-bg: #28284e;
+      --dashboard-text: #fefcff;
+      --dashboard-gradient: linear-gradient(45deg, #01ebaf, #00a9cd, #6380ff);
+    }
+
+    body {
+      background: linear-gradient(135deg, #000000, #2D3436);
+      color: #fff;
+    }
+
+    header {
+      width: 100%;
+      padding: 20px 30px;
+      background: linear-gradient(135deg, #000000, #2D3436);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo img {
+      height: 40px;
+      cursor: pointer;
+      display: block;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #bbb;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .circle-bg {
+      position: absolute;
+      width: 650px;
+      height: 650px;
+      background: linear-gradient(135deg, #ff7c7d, #ffda67);
+      border-radius: 70%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.15;
+      z-index: 1;
+    }
+
+    .title-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .subtitle {
+      position: absolute;
+      top: -20%; 
+      left: 50%;
+      transform: translate(-50%, 0);
+      z-index: 4;
+      font-size: 38px;
+      color: #fff;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: titulo2;
+    }
+
+    .main-title {
+      font-size: 6rem;
+      font-family: titulo1;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 15px;
+      box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.2);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .info-section {
+      max-width: 1200px;
+      margin: 100px auto 50px;
+      padding: 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .info-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .info-text h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      font-family: titulo2;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .info-text p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #ddd;
+      margin-bottom: 20px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 14px 24px;
+      background-color: #ff7c7d;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.3s;
+      border-radius: 6px;
+      position: relative;
+      z-index: 4;
+    }
+
+    .cta-button:hover {
+      background-color: #ffda67;
+      color: #272524;
+      transform: scale(1.05);
+    }
+
+    /* Footer Styles */
+    .footer {
+      background: linear-gradient(135deg, #000000, #1a1a1a);
+      color: #fff;
+      padding: 60px 0 20px;
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      padding: 0 20px;
+    }
+
+    .footer-section h3 {
+      font-family: titulo2;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(135deg, #ff7c7d, #ffda67);
+    }
+
+    .footer-section p {
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-section ul li a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section ul li a:hover {
+      color: #ff7c7d;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: #ff7c7d;
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 40px;
+      margin-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-bottom p {
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+      }
+      
+      .footer-section {
+        text-align: center;
+      }
+      
+      .footer-section h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .social-links {
+        justify-content: center;
+      }
+    }
+
+    /* Carousel Styles */
+    .carousel-section {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .carousel-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-family: titulo2;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .carousel-section p {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      color: #ddd;
+      line-height: 1.6;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 50vw;
+      max-height: 400px;
+      perspective: 100px;
+      overflow: hidden;
+      cursor: grab;
+      border-radius: 15px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .viewport {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      overflow-x: scroll;
+      counter-reset: item;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+    }
+
+    .carousel::before,
+    .carousel::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      translate: -50% 0;
+      width: 500%;
+      height: 500%;
+      border-radius: 50%;
+      background: var(--color-bg, #16181b);
+    }
+
+    .carousel::before {
+      top: -480%;
+    }
+
+    .carousel::after {
+      bottom: -480%;
+    }
+
+    .slide {
+      position: relative;
+      flex: 0 0 33.33%;
+      width: 33.33%;
+      counter-increment: item;
+    }
+
+    .slide:before {
+      content: counter(item);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -40%, 70px);
+      color: #fff;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .snapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      scroll-snap-align: center;
+      background-size: cover;
+      background-position: 50%;
+      border: 10px solid var(--color-bg, #16181b);
+    }
+
+    * {
+      box-sizing: border-box;
+      scrollbar-color: transparent transparent;
+      scrollbar-width: 0px;
+    }
+
+    *::-webkit-scrollbar {
+      width: 0;
+    }
+
+    *::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background: transparent;
+      border: none;
+    }
+
+    * {
+      -ms-overflow-style: none;
+    }
+
+    ol, li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .carousel-title {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .carousel-description {
+      font-size: 0.9rem;
+      color: #ddd;
+      margin-top: 10px;
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Dashboard Cards */
+    .dashboard-section {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .dashboard-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-family: titulo2;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .dashboard-section p {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      color: #ddd;
+      line-height: 1.6;
+    }
+
+    .dashboard {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 180px);
+      gap: 24px;
+    }
+
+    @media (width >= 620px) {
+      .dashboard-card {
+        min-width: 33.33%;
+      }
+
+      .dashboard-card-icon img:first-child {
+        width: 5vw;
+        max-width: 40px;
+      }
+
+      .dashboard {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .dashboard-card {
+      padding: 20px;
+      border-radius: 16px;
+      background: var(--dashboard-bg);
+      box-shadow: 7px 7px 29px #191931, -7px -7px 29px #37376b;
+    }
+
+    .dashboard-card .more {
+      margin-bottom: 16px;
+    }
+
+    .dashboard-card h2 {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .dashboard-card h3 {
+      font-size: 12px;
+      opacity: 0.5;
+      margin-bottom: 16px;
+    }
+
+    .dashboard-card var {
+      font-style: normal;
+      font-size: 38px;
+    }
+
+    .dashboard-card var abbr {
+      font-size: 12px;
+      opacity: 0.4;
+    }
+
+    .dashboard-card.primary {
+      background: var(--dashboard-gradient);
+    }
+
+    .dashboard-card-icon,
+    .dashboard-card-progress {
+      height: 120px;
+      display: flex;
+    }
+
+    .dashboard-card-icon {
+      gap: 12px;
+      align-items: center;
+    }
+
+    .dashboard-card-icon img:last-child {
+      margin-left: auto;
+    }
+
+    .dashboard-card-icon h3 {
+      margin: 0;
+    }
+
+    .dashboard-card-progress {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .dashboard-card progress {
+      display: block;
+      width: 100%;
+      appearance: none;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      height: 8px;
+    }
+
+    .dashboard-card progress::-webkit-progress-bar {
+      background: rgb(255 255 255 / 6%);
+      border-radius: 10px;
+    }
+
+    .dashboard-card progress::-webkit-progress-value {
+      background: var(--dashboard-gradient);
+      border-radius: 10px;
+    }
+
+    /* Profile Cards */
+    .profile-cards-section {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .profile-cards-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-family: titulo2;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .profile-cards-section p {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      color: #ddd;
+      line-height: 1.6;
+    }
+
+    .profile-cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .profile-card {
+      display: flex;
+      align-items: center;
+      width: 75vw;
+      max-width: 650px;
+      padding: 44px 30px 44px 20px;
+      background: var(--card);
+      border-radius: 24px;
+    }
+
+    .profile-card img {
+      max-width: 280px;
+      width: 36vw;
+      height: 300px;
+      object-fit: cover;
+      margin-left: -60px;
+      margin-right: 30px;
+      border-radius: inherit;
+      box-shadow: 0 60px 40px rgb(0 0 0 / 8%);
+      transition: border-radius 0.3s;
+    }
+
+    .profile-card h2 {
+      font-size: 22px;
+      font-weight: 400;
+      margin-top: 0;
+      margin-right: 30px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .profile-card h3 {
+      font-size: 14px;
+      font-weight: 400;
+      margin: 0;
+      opacity: 0.75;
+      text-align: left;
+    }
+
+    .profile-card p {
+      font-size: 13px;
+      font-weight: 400;
+      margin-bottom: 30px;
+      opacity: 0.5;
+      text-align: left;
+    }
+
+    .socials {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .socials > button {
+      position: relative;
+      border: 0;
+      background: transparent;
+      color: #f8f8f8;
+      padding: 0;
+    }
+
+    .socials > button:first-child::before {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      top: 50%;
+      left: 50%;
+      width: 52px;
+      height: 52px;
+      translate: -50% -50%;
+      border-radius: 50%;
+      background: var(--gradient);
+      transition: 0.3s;
+      transform: translateY(0);
+    }
+
+    .socials > button > i {
+      position: relative;
+      z-index: 1;
+      border: 4px solid var(--card);
+      background: #3f3b39;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      width: 50px;
+      height: 50px;
+      border-radius: 40px;
+    }
+
+    @media (width <= 600px) {
+      .profile-card {
+        margin: 0 40px;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-bottom: 60px;
+        width: 100%;
+        text-align: center;
+        flex-direction: column;
+      }
+
+      .profile-card h2 {
+        margin-right: 0;
+        font-size: 26px;
+        text-align: center;
+      }
+
+      .profile-card h3, .profile-card p {
+        text-align: center;
+      }
+
+      .profile-card img {
+        margin: -100px 0 30px 0;
+        width: 100%;
+        max-width: 1000px;
+        height: 250px;
+      }
+
+      .profile-card p {
+        max-width: 360px;
+      }
+
+      .socials {
+        justify-content: center;
+      }
+    }
+
+    @media (width <= 440px) {
+      .profile-card img {
+        height: 50vw;
+        width: 50vw;
+        border-radius: 50%;
+        border: 12px solid var(--card);
+        box-shadow: none;
+        margin: -140px 0 30px 0;
+      }
+    }
+
+    /* White Card Styles */
+    .white-cards-section {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .white-cards-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-family: titulo2;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .white-cards-section p {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      color: #ddd;
+      line-height: 1.6;
+    }
+
+    .white-cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .white-card {
+      display: flex;
+      align-items: center;
+      width: 75vw;
+      max-width: 650px;
+      padding: 50px 30px 50px 20px;
+      background: #ffffff;
+      border-radius: 24px;
+      color: #575556;
+    }
+
+    .white-card img {
+      max-width: 280px;
+      width: 32vw;
+      height: 270px;
+      object-fit: cover;
+      margin-left: -60px;
+      margin-right: 40px;
+      border-radius: inherit;
+    }
+
+    .white-card h2 {
+      font-size: 28px;
+      font-weight: 400;
+      margin: 0;
+      color: #575556;
+      text-align: left;
+    }
+
+    .white-card h3 {
+      font-size: 16px;
+      font-weight: 400;
+      opacity: 0.5;
+      margin: 0 0 20px;
+      color: #575556;
+      text-align: left;
+    }
+
+    .white-card p {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgb(0 0 0 / 70%);
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .white-card .buttons {
+      display: inline-flex;
+      gap: 10px;
+    }
+
+    .white-card button {
+      border: 1px solid #a7a7a7;
+      background: transparent;
+      color: #a7a7a7;
+      font-family: inherit;
+      padding: 16px 20px;
+      font-size: 18px;
+      border-radius: 6px;
+      min-width: 120px;
+      cursor: pointer;
+    }
+
+    .white-card button.primary {
+      background: #fe5c89;
+      color: #f9f9f9;
+      border: 0;
+    }
+
+    @media (width <= 720px) {
+      .white-card {
+        margin: 0 40px;
+        padding-left: 50px;
+        padding-right: 50px;
+        width: 100%;
+        text-align: center;
+        flex-direction: column;
+      }
+
+      .white-card h2 {
+        font-size: 30px;
+        text-align: center;
+      }
+
+      .white-card h3, .white-card p {
+        text-align: center;
+      }
+
+      .white-card img {
+        margin: -100px 0 30px 0;
+        width: 100%;
+        max-width: 1000px;
+      }
+
+      .white-card .stats var {
+        min-width: 90px;
+      }
+
+      .white-card button {
+        min-width: 160px;
+      }
+    }
+
+    .white-card .stats {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      margin: 0 0 24px;
+      padding: 0;
+    }
+
+    .white-card .stats var {
+      display: block;
+      font-style: normal;
+      font-size: 26px;
+    }
+
+    .white-card .stats label {
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo Luxury Stay">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="habitaciones.html">Habitaciones</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="reservas.html">Reservas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="circle-bg"></div>
+    <div class="title-container">
+      <div class="subtitle">Experiencia de lujo</div>
+      <h1 class="main-title">Reservas</h1>
+      <img src="https://placeholder.svg?height=500&width=500&text=Hotel+de+Lujo" alt="Hotel de Lujo">
+      <a class="cta-button" href="#reservar-ahora">Reservar Ahora</a>
+    </div>
+  </section>
+
+  <!-- Carousel Section -->
+  <section class="carousel-section">
+    <h2>Nuestras Habitaciones Premium</h2>
+    <p>Descubre nuestras lujosas habitaciones diseñadas para brindarte la máxima comodidad y una experiencia inolvidable durante tu estadía.</p>
+    
+    <div class="carousel">
+      <ol class="viewport" tabindex="1">
+        <li class="slide">
+          <div class="snapper" style="background-image: url('https://placeholder.svg?height=400&width=600&text=Suite+Presidencial')"></div>
+        </li>
+        <li class="slide">
+          <div class="snapper" style="background-image: url('https://placeholder.svg?height=400&width=600&text=Suite+Ejecutiva')"></div>
+        </li>
+        <li class="slide">
+          <div class="snapper" style="background-image: url('https://placeholder.svg?height=400&width=600&text=Habitación+Deluxe')"></div>
+        </li>
+        <li class="slide">
+          <div class="snapper" style="background-image: url('https://placeholder.svg?height=400&width=600&text=Habitación+Premium')"></div>
+        </li>
+        <li class="slide">
+          <div class="snapper" style="background-image: url('https://placeholder.svg?height=400&width=600&text=Habitación+Estándar')"></div>
+        </li>
+        <li class="slide">
+          <div class="snapper" style="background-image: url('https://placeholder.svg?height=400&width=600&text=Suite+Familiar')"></div>
+        </li>
+        <li class="slide">
+          <div class="snapper" style="background-image: url('https://placeholder.svg?height=400&width=600&text=Penthouse')"></div>
+        </li>
+      </ol>
+    </div>
+    
+    <div class="carousel-title">Desliza para explorar todas nuestras habitaciones</div>
+    <div class="carousel-description">Nuestras habitaciones están equipadas con amenidades de lujo, vistas espectaculares y el máximo confort para hacer de tu estadía una experiencia inolvidable.</div>
+  </section>
+
+  <section class="info-section">
+    <div class="info-text">
+      <h2>Sobre Nuestro Hotel</h2>
+      <p>
+        Luxury Stay es un hotel de cinco estrellas ubicado en el corazón de la ciudad, 
+        ofreciendo una experiencia de hospedaje inigualable con servicios de primera clase, 
+        restaurantes gourmet y un spa de lujo para el máximo confort de nuestros huéspedes.
+      </p>
+    </div>
+  </section>
+
+  <!-- Dashboard Section -->
+  <section class="dashboard-section">
+    <h2>Estadísticas de Reservas</h2>
+    <p>Conoce la disponibilidad y las tendencias de reservas en nuestro hotel para planificar tu estadía perfecta.</p>
+    
+    <div class="dashboard">
+      <div class="dashboard-card">
+        <svg class="more" width="4" height="16" viewBox="0 0 4 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 16C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14C0 13.45 0.195833 12.9792 0.5875 12.5875C0.979167 12.1958 1.45 12 2 12C2.55 12 3.02083 12.1958 3.4125 12.5875C3.80417 12.9792 4 13.45 4 14C4 14.55 3.80417 15.0208 3.4125 15.4125C3.02083 15.8042 2.55 16 2 16ZM2 10C1.45 10 0.979167 9.80417 0.5875 9.4125C0.195833 9.02083 0 8.55 0 8C0 7.45 0.195833 6.97917 0.5875 6.5875C0.979167 6.19583 1.45 6 2 6C2.55 6 3.02083 6.19583 3.4125 6.5875C3.80417 6.97917 4 7.45 4 8C4 8.55 3.80417 9.02083 3.4125 9.4125C3.02083 9.80417 2.55 10 2 10ZM2 4C1.45 4 0.979167 3.80417 0.5875 3.4125C0.195833 3.02083 0 2.55 0 2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0C2.55 0 3.02083 0.195833 3.4125 0.5875C3.80417 0.979167 4 1.45 4 2C4 2.55 3.80417 3.02083 3.4125 3.4125C3.02083 3.80417 2.55 4 2 4Z" fill="#FEFCFF" fill-opacity="0.5"/>
+        </svg>
+        <h2>Cancelaciones</h2>
+        <h3>Este mes</h3>
+        <var>
+          12
+          <abbr>reservas</abbr>
+        </var>
+      </div>
+      <div class="dashboard-card primary">
+        <svg class="more" width="4" height="16" viewBox="0 0 4 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 16C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14C0 13.45 0.195833 12.9792 0.5875 12.5875C0.979167 12.1958 1.45 12 2 12C2.55 12 3.02083 12.1958 3.4125 12.5875C3.80417 12.9792 4 13.45 4 14C4 14.55 3.80417 15.0208 3.4125 15.4125C3.02083 15.8042 2.55 16 2 16ZM2 10C1.45 10 0.979167 9.80417 0.5875 9.4125C0.195833 9.02083 0 8.55 0 8C0 7.45 0.195833 6.97917 0.5875 6.5875C0.979167 6.19583 1.45 6 2 6C2.55 6 3.02083 6.19583 3.4125 6.5875C3.80417 6.97917 4 7.45 4 8C4 8.55 3.80417 9.02083 3.4125 9.4125C3.02083 9.80417 2.55 10 2 10ZM2 4C1.45 4 0.979167 3.80417 0.5875 3.4125C0.195833 3.02083 0 2.55 0 2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0C2.55 0 3.02083 0.195833 3.4125 0.5875C3.80417 0.979167 4 1.45 4 2C4 2.55 3.80417 3.02083 3.4125 3.4125C3.02083 3.80417 2.55 4 2 4Z" fill="#FEFCFF" fill-opacity="0.5"/>
+        </svg>
+        <h2>Reservas</h2>
+        <h3>Este mes</h3>
+        <var>
+          85
+          <abbr>habitaciones</abbr>
+        </var>
+      </div>
+      <div class="dashboard-card">
+        <svg class="more" width="4" height="16" viewBox="0 0 4 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 16C1.45 16 0.979167 15.8042 0.5875 15.4125C0.195833 15.0208 0 14.55 0 14C0 13.45 0.195833 12.9792 0.5875 12.5875C0.979167 12.1958 1.45 12 2 12C2.55 12 3.02083 12.1958 3.4125 12.5875C3.80417 12.9792 4 13.45 4 14C4 14.55 3.80417 15.0208 3.4125 15.4125C3.02083 15.8042 2.55 16 2 16ZM2 10C1.45 10 0.979167 9.80417 0.5875 9.4125C0.195833 9.02083 0 8.55 0 8C0 7.45 0.195833 6.97917 0.5875 6.5875C0.979167 6.19583 1.45 6 2 6C2.55 6 3.02083 6.19583 3.4125 6.5875C3.80417 6.97917 4 7.45 4 8C4 8.55 3.80417 9.02083 3.4125 9.4125C3.02083 9.80417 2.55 10 2 10ZM2 4C1.45 4 0.979167 3.80417 0.5875 3.4125C0.195833 3.02083 0 2.55 0 2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0C2.55 0 3.02083 0.195833 3.4125 0.5875C3.80417 0.979167 4 1.45 4 2C4 2.55 3.80417 3.02083 3.4125 3.4125C3.02083 3.80417 2.55 4 2 4Z" fill="#FEFCFF" fill-opacity="0.5"/>
+        </svg>
+        <h2>Ingresos</h2>
+        <h3>Este mes</h3>
+        <var>
+          45k
+          <abbr>USD</abbr>
+        </var>
+      </div>
+      <div class="dashboard-card">
+        <h2>Ocupación</h2>
+        <div class="dashboard-card-progress">
+          <progress value="78" max="100"></progress>
+          <var>
+            78%
+            <abbr>OCUPADO</abbr>
+          </var>
+        </div>
+      </div>
+      <div class="dashboard-card">
+        <h2>Habitaciones</h2>
+        <div class="dashboard-card-icon">
+          <svg width="39" height="38" viewBox="0 0 39 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.0312 34.8334L14.3812 29.7667C14.0292 29.6347 13.6974 29.4764 13.3859 29.2917C13.0745 29.107 12.7698 28.909 12.4719 28.6979L7.6375 30.6771L3.16875 23.1563L7.35312 20.0688C7.32604 19.884 7.3125 19.7059 7.3125 19.5344V18.4656C7.3125 18.2941 7.32604 18.116 7.35312 17.9313L3.16875 14.8438L7.6375 7.32294L12.4719 9.3021C12.7698 9.09099 13.0812 8.89308 13.4062 8.70835C13.7312 8.52363 14.0562 8.3653 14.3812 8.23335L15.0312 3.16669H23.9687L24.6187 8.23335C24.9708 8.3653 25.3026 8.52363 25.6141 8.70835C25.9255 8.89308 26.2302 9.09099 26.5281 9.3021L31.3625 7.32294L35.8312 14.8438L31.6469 17.9313C31.674 18.116 31.6875 18.2941 31.6875 18.4656V19.5344C31.6875 19.7059 31.6604 19.884 31.6062 20.0688L35.7906 23.1563L31.3219 30.6771L26.5281 28.6979C26.2302 28.909 25.9187 29.107 25.5937 29.2917C25.2687 29.4764 24.9437 29.6347 24.6187 29.7667L23.9687 34.8334H15.0312ZM19.5812 24.5417C21.1521 24.5417 22.4927 24.0007 23.6031 22.9188C24.7135 21.8368 25.2687 20.5306 25.2687 19C25.2687 17.4695 24.7135 16.1632 23.6031 15.0813C22.4927 13.9993 21.1521 13.4584 19.5812 13.4584C17.9833 13.4584 16.6359 13.9993 15.5391 15.0813C14.4422 16.1632 13.8937 17.4695 13.8937 19C13.8937 20.5306 14.4422 21.8368 15.5391 22.9188C16.6359 24.0007 17.9833 24.5417 19.5812 24.5417Z" fill="#E8EAED"/>
+            <path d="M15.0312 34.8334L14.3812 29.7667C14.0292 29.6347 13.6974 29.4764 13.3859 29.2917C13.0745 29.107 12.7698 28.909 12.4719 28.6979L7.6375 30.6771L3.16875 23.1563L7.35312 20.0688C7.32604 19.884 7.3125 19.7059 7.3125 19.5344V18.4656C7.3125 18.2941 7.32604 18.116 7.35312 17.9313L3.16875 14.8438L7.6375 7.32294L12.4719 9.3021C12.7698 9.09099 13.0812 8.89308 13.4062 8.70835C13.7312 8.52363 14.0562 8.3653 14.3812 8.23335L15.0312 3.16669H23.9687L24.6187 8.23335C24.9708 8.3653 25.3026 8.52363 25.6141 8.70835C25.9255 8.89308 26.2302 9.09099 26.5281 9.3021L31.3625 7.32294L35.8312 14.8438L31.6469 17.9313C31.674 18.116 31.6875 18.2941 31.6875 18.4656V19.5344C31.6875 19.7059 31.6604 19.884 31.6062 20.0688L35.7906 23.1563L31.3219 30.6771L26.5281 28.6979C26.2302 28.909 25.9187 29.107 25.5937 29.2917C25.2687 29.4764 24.9437 29.6347 24.6187 29.7667L23.9687 34.8334H15.0312ZM19.5812 24.5417C21.1521 24.5417 22.4927 24.0007 23.6031 22.9188C24.7135 21.8368 25.2687 20.5306 25.2687 19C25.2687 17.4695 24.7135 16.1632 23.6031 15.0813C22.4927 13.9993 21.1521 13.4584 19.5812 13.4584C17.9833 13.4584 16.6359 13.9993 15.5391 15.0813C14.4422 16.1632 13.8937 17.4695 13.8937 19C13.8937 20.5306 14.4422 21.8368 15.5391 22.9188C16.6359 24.0007 17.9833 24.5417 19.5812 24.5417Z" fill="url(#paint0_linear_112_9)"/>
+            <defs>
+            <linearGradient id="paint0_linear_112_9" x1="3.16875" y1="34.8334" x2="34.8202" y2="2.1865" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#06BD8E"/>
+            <stop offset="0.500781" stop-color="#00A9CD"/>
+            <stop offset="1" stop-color="#6380FF"/>
+            </linearGradient>
+            </defs>
+          </svg>
+          <div>
+            <h3>Total</h3>
+            <var>120</var>
+          </div>
+          <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.31667 7.65009L2.31667 14.6501L0.683334 13.0168L6.05 7.65009L0.683334 2.28342L2.31667 0.650085L9.31667 7.65009Z" fill="#FEFCFF" fill-opacity="0.5"/>
+          </svg>
+        </div>
+      </div>
+      <div class="dashboard-card">
+        <h2>Valoraciones</h2>
+        <div class="dashboard-card-icon">
+          <svg width="39" height="40" viewBox="0 0 39 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.5 35L17.1437 32.8334C14.4083 30.3056 12.1469 28.125 10.3594 26.2917C8.57187 24.4584 7.15 22.8125 6.09375 21.3542C5.0375 19.8959 4.29948 18.5556 3.87969 17.3334C3.4599 16.1111 3.25 14.8611 3.25 13.5834C3.25 10.9722 4.10312 8.79169 5.80937 7.04169C7.51562 5.29169 9.64167 4.41669 12.1875 4.41669C13.5958 4.41669 14.9365 4.72224 16.2094 5.33335C17.4823 5.94446 18.5792 6.80558 19.5 7.91669C20.4208 6.80558 21.5177 5.94446 22.7906 5.33335C24.0635 4.72224 25.4042 4.41669 26.8125 4.41669C29.3583 4.41669 31.4844 5.29169 33.1906 7.04169C34.8969 8.79169 35.75 10.9722 35.75 13.5834C35.75 14.8611 35.5401 16.1111 35.1203 17.3334C34.7005 18.5556 33.9625 19.8959 32.9062 21.3542C31.85 22.8125 30.4281 24.4584 28.6406 26.2917C26.8531 28.125 24.5917 30.3056 21.8562 32.8334L19.5 35Z" fill="#E8EAED"/>
+            <path d="M19.5 35L17.1437 32.8334C14.4083 30.3056 12.1469 28.125 10.3594 26.2917C8.57187 24.4584 7.15 22.8125 6.09375 21.3542C5.0375 19.8959 4.29948 18.5556 3.87969 17.3334C3.4599 16.1111 3.25 14.8611 3.25 13.5834C3.25 10.9722 4.10312 8.79169 5.80937 7.04169C7.51562 5.29169 9.64167 4.41669 12.1875 4.41669C13.5958 4.41669 14.9365 4.72224 16.2094 5.33335C17.4823 5.94446 18.5792 6.80558 19.5 7.91669C20.4208 6.80558 21.5177 5.94446 22.7906 5.33335C24.0635 4.72224 25.4042 4.41669 26.8125 4.41669C29.3583 4.41669 31.4844 5.29169 33.1906 7.04169C34.8969 8.79169 35.75 10.9722 35.75 13.5834C35.75 14.8611 35.5401 16.1111 35.1203 17.3334C34.7005 18.5556 33.9625 19.8959 32.9062 21.3542C31.85 22.8125 30.4281 24.4584 28.6406 26.2917C26.8531 28.125 24.5917 30.3056 21.8562 32.8334L19.5 35Z" fill="url(#paint0_linear_112_11)"/>
+            <defs>
+            <linearGradient id="paint0_linear_112_11" x1="3.25" y1="35" x2="33.7769" y2="2.55997" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#01EBAF"/>
+            <stop offset="0.500781" stop-color="#00A9CD"/>
+            <stop offset="1" stop-color="#6380FF"/>
+            </linearGradient>
+            </defs>
+          </svg>
+          <div>
+            <h3>Satisfacción</h3>
+            <var>92%</var>
+          </div>
+          <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.31667 7.65009L2.31667 14.6501L0.683334 13.0168L6.05 7.65009L0.683334 2.28342L2.31667 0.650085L9.31667 7.65009Z" fill="#FEFCFF" fill-opacity="0.5"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profile Cards Section -->
+  <section class="profile-cards-section">
+    <h2>Nuestro Equipo de Servicio</h2>
+    <p>Conoce a los profesionales que harán de tu estadía una experiencia inolvidable con atención personalizada y servicio de excelencia.</p>
+    
+    <div class="profile-cards-container">
+      <div class="profile-card">
+        <img src="https://placeholder.svg?height=300&width=280&text=María+López" />
+        <div>
+          <h2>María López</h2>
+          <h3>Gerente de Reservas</h3>
+          <p>Experta en crear experiencias personalizadas para cada huésped, garantizando una estadía perfecta desde el primer contacto.</p>
+          <div class="socials">
+            <button>
+              <i class="fa-brands fa-instagram"></i>
+            </button>
+            <button>
+              <i class="fa-brands fa-linkedin"></i>
+            </button>
+            <button>
+              <i class="fa-brands fa-twitter"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="profile-card">
+        <img src="https://placeholder.svg?height=300&width=280&text=Carlos+Mendoza" />
+        <div>
+          <h2>Carlos Mendoza</h2>
+          <h3>Concierge Principal</h3>
+          <p>Con más de 15 años de experiencia, Carlos conoce los mejores lugares de la ciudad y puede organizar cualquier actividad que desees.</p>
+          <div class="socials">
+            <button>
+              <i class="fa-brands fa-instagram"></i>
+            </button>
+            <button>
+              <i class="fa-brands fa-linkedin"></i>
+            </button>
+            <button>
+              <i class="fa-brands fa-twitter"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="profile-card">
+        <img src="https://placeholder.svg?height=300&width=280&text=Ana+Rodríguez" />
+        <div>
+          <h2>Ana Rodríguez</h2>
+          <h3>Chef Ejecutiva</h3>
+          <p>Creadora de experiencias gastronómicas únicas que combinan sabores locales con técnicas internacionales para deleitar tu paladar.</p>
+          <div class="socials">
+            <button>
+              <i class="fa-brands fa-instagram"></i>
+            </button>
+            <button>
+              <i class="fa-brands fa-linkedin"></i>
+            </button>
+            <button>
+              <i class="fa-brands fa-twitter"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="profile-card">
+        <img src="https://placeholder.svg?height=300&width=280&text=Roberto+Sánchez" />
+        <div>
+          <h2>Roberto Sánchez</h2>
+          <h3>Director de Experiencias</h3>
+          <p>Especialista en crear momentos memorables para cada huésped, desde cenas románticas hasta aventuras familiares inolvidables.</p>
+          <div class="socials">
+            <button>
+              <i class="fa-brands fa-instagram"></i>
+            </button>
+            <button>
+              <i class="fa-brands fa-linkedin"></i>
+            </button>
+            <button>
+              <i class="fa-brands fa-twitter"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="profile-card">
+        <img src="https://placeholder.svg?height=300&width=280&text=Elena+Torres" />
+        <div>
+          <h2>Elena Torres</h2>
+          <h3>Directora de Spa</h3>
+          <p>Experta en terapias de relajación y bienestar, Elena y su equipo te ayudarán a encontrar el equilibrio perfecto durante tu estadía.</p>
+          <div class="socials">
+            <button>
+              <i class="fa-brands fa-instagram"></i>
+            </button>
+            <button>
+              <i class="fa-brands fa-linkedin"></i>
+            </button>
+            <button>
+              <i class="fa-brands fa-twitter"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- White Cards Section -->
+  <section class="white-cards-section" id="reservar-ahora">
+    <h2>Nuestros Paquetes Especiales</h2>
+    <p>Descubre nuestras ofertas exclusivas diseñadas para hacer de tu estadía una experiencia inolvidable con beneficios adicionales.</p>
+    
+    <div class="white-cards-container">
+      <div class="white-card">
+        <img src="https://placeholder.svg?height=270&width=280&text=Luna+de+Miel" />
+        <div>
+          <h2>Paquete Luna de Miel</h2>
+          <h3>Experiencia romántica inolvidable</h3>
+          <ul class="stats">
+            <li>
+              <var>5</var>
+              <label>Noches</label>
+            </li>
+            <li>
+              <var>2</var>
+              <label>Masajes</label>
+            </li>
+            <li>
+              <var>1</var>
+              <label>Cena especial</label>
+            </li>
+          </ul>
+          <nav class="buttons">
+            <button class="primary">Reservar</button>
+            <button>Más info</button>
+          </nav>
+        </div>
+      </div>
+      
+      <div class="white-card">
+        <img src="https://placeholder.svg?height=270&width=280&text=Escapada+Familiar" />
+        <div>
+          <h2>Escapada Familiar</h2>
+          <h3>Diversión para grandes y pequeños</h3>
+          <ul class="stats">
+            <li>
+              <var>4</var>
+              <label>Noches</label>
+            </li>
+            <li>
+              <var>4</var>
+              <label>Personas</label>
+            </li>
+            <li>
+              <var>2</var>
+              <label>Actividades</label>
+            </li>
+          </ul>
+          <nav class="buttons">
+            <button class="primary">Reservar</button>
+            <button>Más info</button>
+          </nav>
+        </div>
+      </div>
+      
+      <div class="white-card">
+        <img src="https://placeholder.svg?height=270&width=280&text=Ejecutivo+Premium" />
+        <div>
+          <h2>Ejecutivo Premium</h2>
+          <h3>Comodidad para viajes de negocios</h3>
+          <ul class="stats">
+            <li>
+              <var>3</var>
+              <label>Noches</label>
+            </li>
+            <li>
+              <var>1</var>
+              <label>Sala reuniones</label>
+            </li>
+            <li>
+              <var>∞</var>
+              <label>Wi-Fi premium</label>
+            </li>
+          </ul>
+          <nav class="buttons">
+            <button class="primary">Reservar</button>
+            <button>Más info</button>
+          </nav>
+        </div>
+      </div>
+      
+      <div class="white-card">
+        <img src="https://placeholder.svg?height=270&width=280&text=Experiencia+Wellness" />
+        <div>
+          <h2>Experiencia Wellness</h2>
+          <h3>Relájate y renuévate</h3>
+          <ul class="stats">
+            <li>
+              <var>3</var>
+              <label>Noches</label>
+            </li>
+            <li>
+              <var>4</var>
+              <label>Tratamientos spa</label>
+            </li>
+            <li>
+              <var>2</var>
+              <label>Clases yoga</label>
+            </li>
+          </ul>
+          <nav class="buttons">
+            <button class="primary">Reservar</button>
+            <button>Más info</button>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Sobre Nosotros</h3>
+        <p>Luxury Stay es un hotel de cinco estrellas comprometido con la excelencia en servicio y la creación de experiencias inolvidables para nuestros huéspedes.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Enlaces Rápidos</h3>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#habitaciones">Habitaciones</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contacto</h3>
+        <ul>
+          <li>📍 Av. Principal 123</li>
+          <li>📞 +1 234 567 890</li>
+          <li>✉ info@luxurystay.com</li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Síguenos</h3>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Luxury Stay. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Carousel Script
+    document.addEventListener('DOMContentLoaded', function() {
+      const viewport = document.querySelector('.viewport');
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      viewport.addEventListener('mousedown', (e) => {
+        isDown = true;
+        viewport.style.cursor = 'grabbing';
+        startX = e.pageX - viewport.offsetLeft;
+        scrollLeft = viewport.scrollLeft;
+      });
+
+      viewport.addEventListener('mouseleave', () => {
+        isDown = false;
+        viewport.style.cursor = 'grab';
+      });
+
+      viewport.addEventListener('mouseup', () => {
+        isDown = false;
+        viewport.style.cursor = 'grab';
+      });
+
+      viewport.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - viewport.offsetLeft;
+        const walk = (x - startX) * 2; // Scroll speed
+        viewport.scrollLeft = scrollLeft - walk;
+      });
+    });
+  </script>
+
+</body>
+</html>}

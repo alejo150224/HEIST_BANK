@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HEIST BANK - Hotel V1538</title>
+
+  <style>
+    @font-face {
+      font-family: titulo1;
+      src: url("fonts/Quicksilver.ttf");
+    }
+    @font-face {
+      font-family: titulo2;
+      src: url("fonts/SIMPLIFICA Typeface.ttf");
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Arial", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #000000, #2D3436);
+      color: #fff;
+    }
+
+    header {
+      width: 100%;
+      padding: 20px 30px;
+      background: linear-gradient(135deg, #000000, #2D3436);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo img {
+      height: 40px;
+      cursor: pointer;
+      display: block;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #bbb;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .circle-bg {
+      position: absolute;
+      width: 650px;
+      height: 650px;
+      background: linear-gradient(135deg, #20A4F3, #009FC2);
+      border-radius: 70%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.15;
+      z-index: 1;
+    }
+
+    .title-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .subtitle {
+      position: absolute;
+      top: -20%; 
+      left: 50%;
+      transform: translate(-50%, 0);
+      z-index: 4;
+      font-size: 38px;
+      color: #fff;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: titulo2;
+    }
+
+    .main-title {
+      font-size: 6rem;
+      font-family: titulo1;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 15px;
+      box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.2);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .info-section {
+      max-width: 1200px;
+      margin: 100px auto 50px;
+      padding: 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .info-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .info-text h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      font-family: titulo2;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .info-text p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #ddd;
+      margin-bottom: 20px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 14px 24px;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.3s;
+      border-radius: 6px;
+      position: relative;
+      z-index: 4;
+    }
+
+    .cta-button:hover {
+      background-color: #000;
+      transform: scale(1.05);
+    }
+
+    /* Footer Styles */
+.footer {
+  background: linear-gradient(135deg, #000000, #1a1a1a);
+  color: #fff;
+  padding: 60px 0 20px;
+  margin-top: 80px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  padding: 0 20px;
+}
+
+.footer-section h3 {
+  font-family: titulo2;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-section h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(135deg, #20A4F3, #009FC2);
+}
+
+.footer-section p {
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 12px;
+}
+
+.footer-section ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: #20A4F3;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: #20A4F3;
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 40px;
+  margin-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+  }
+  
+  .footer-section {
+    text-align: center;
+  }
+  
+  .footer-section h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+}
+
+    /* Estilos para las secciones */
+.section-title {
+  font-size: 2.5rem;
+  font-family: titulo2;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.section-description {
+  font-size: 1.1rem;
+  color: #ddd;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+/* Estilos para el primer carrusel */
+.featured-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #000000, #1a1a1a);
+}
+
+.carousel {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  max-height: 600px;
+}
+
+.carousel-images {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  width: 300%;
+  height: 100%;
+  transition: 0.5s;
+}
+
+.carousel img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.carousel-controls {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+input {
+  display: none;
+}
+
+label {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0.3;
+  backdrop-filter: blur(20px);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dots {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(transparent, #000 90%);
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+input:nth-child(1):checked ~ .dots label:nth-child(1),
+input:nth-child(2):checked ~ .dots label:nth-child(2),
+input:nth-child(3):checked ~ .dots label:nth-child(3) {
+  background: rgba(255, 255, 255, 0.95);
+  opacity: 1;
+  backdrop-filter: none;
+}
+
+input:nth-child(1):checked ~ .carousel-images {
+  translate: 0;
+}
+
+input:nth-child(2):checked ~ .carousel-images {
+  translate: -100vw;
+}
+
+input:nth-child(3):checked ~ .carousel-images {
+  translate: -200vw;
+}
+
+/* Estilos para el segundo carrusel */
+.amenities-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #1a1a1a, #2D3436);
+}
+
+.carousel-circular {
+  position: relative;
+  width: 100%;
+  height: 30vh;
+  min-height: 400px;
+  perspective: 100px;
+  overflow: hidden;
+}
+
+.carousel-viewport {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  overflow-x: scroll;
+  counter-reset: item;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-circular::before,
+.carousel-circular::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  translate: -50% 0;
+  width: 500%;
+  height: 500%;
+  border-radius: 50%;
+  background: #1a1a1a;
+}
+
+.carousel-circular::before {
+  top: -480%;
+}
+
+.carousel-circular::after {
+  bottom: -480%;
+}
+
+.carousel-slide {
+  position: relative;
+  flex: 0 0 33.33%;
+  width: 33.33%;
+  counter-increment: item;
+}
+
+.carousel-snapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: center;
+  background-size: cover;
+  background-position: 50%;
+  border: 10px solid #1a1a1a;
+}
+
+/* Estilos para la galería */
+.gallery-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #2D3436, #000000);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 100px;
+  gap: 0px 20px;
+  width: clamp(70vmin, 900px, 90%);
+  margin: 0 auto;
+}
+
+.gallery:has(img:hover) img:not(:hover) {
+  filter: grayscale();
+}
+
+.gallery img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0 20px, 100% 0, 100% calc(100% - 20px), 0 100%);
+  border: 5px solid #20A4F3;
+  transition: transform 0.5s, clip-path 0.5s, filter 0.75s;
+  transform: scale(1);
+  cursor: pointer;
+}
+
+.gallery img:hover {
+  transform: scale(1.4);
+  border-radius: 15px;
+  z-index: 1;
+  width: 100%;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  border: 5px solid #fff;
+}
+
+.gallery img:nth-child(3n) {
+  grid-row: span 2;
+}
+
+.gallery img:nth-last-child(-n+4) {
+  grid-row: span 1;
+}
+
+.gallery img:nth-child(14n) {
+  grid-row: span 2;
+}
+
+.gallery .spacer {
+  background: #20A4F3;
+  border-radius: 15px;
+  clip-path: polygon(0 20px, 100% 0, 100% calc(100% - 20px), 0 100%);
+}
+
+.gallery .quote {
+  grid-row: span 3;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #fff;
+  font-size: 0.9em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.quote span {
+  text-wrap: balance;
+  margin: 0 auto 15px auto;
+  max-width: 80%;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media all and (max-width: 700px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media all and (max-width: 500px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media all and (max-width: 400px) {
+  .gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo Heist Bank">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="hoteles.html">Hoteles</a></li>
+        <li><a href="reservas.html">Reservas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="circle-bg"></div>
+    <div class="title-container">
+      <div class="subtitle">Exclusividad y confort</div>
+      <h1 class="main-title">HOTEL V1538</h1>
+      <img src="images/hotel_v1538.jpg" alt="Hotel V1538">
+      <a class="cta-button" href="reservas.html">Reservar Ahora</a>
+    </div>
+  </section>
+
+  <section class="info-section">
+    <div class="info-text">
+      <h2>Sobre V1538l</h2>
+      <p>
+        Vive una experiencia inolvidable en Hotel V1538, donde el lujo y la comodidad se fusionan.
+        Habitaciones de primer nivel, gastronomía de alta cocina y un servicio excepcional.
+      </p>
+    </div>
+  </section>
+
+<!-- Primer Carrusel - Imágenes Destacadas -->
+<section class="featured-section">
+  <h2 class="section-title">Experiencias Únicas</h2>
+  <p class="section-description">Descubre los momentos inolvidables que te esperan en nuestras instalaciones de lujo.</p>
+  
+  <div class="carousel">
+    <div class="carousel-controls">
+      <input id="1" type="radio" name="controls" checked />
+      <input id="2" type="radio" name="controls" />
+      <input id="3" type="radio" name="controls" />
+      <div class="dots">
+        <label for="1"></label>
+        <label for="2"></label>
+        <label for="3"></label>
+      </div>
+      <div class="carousel-images">
+        <img src="images/hotel-suite.jpg" alt="Suite Presidencial" />
+        <img src="images/hotel-pool.jpg" alt="Piscina Infinity" />
+        <img src="images/hotel-restaurant.jpg" alt="Restaurante Gourmet" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Segundo Carrusel - Amenidades -->
+<section class="amenities-section">
+  <h2 class="section-title">Nuestras Amenidades</h2>
+  <p class="section-description">Explora los servicios exclusivos diseñados para hacer tu estancia excepcional.</p>
+  
+  <section class="carousel-circular">
+    <ol class="carousel-viewport">
+      <li class="carousel-slide">
+        <div class="carousel-snapper" style="background-image: url('images/spa.jpg')"></div>
+      </li>
+      <li class="carousel-slide">
+        <div class="carousel-snapper" style="background-image: url('images/gym.jpg')"></div>
+      </li>
+      <li class="carousel-slide">
+        <div class="carousel-snapper" style="background-image: url('images/bar.jpg')"></div>
+      </li>
+      <li class="carousel-slide">
+        <div class="carousel-snapper" style="background-image: url('images/conference.jpg')"></div>
+      </li>
+      <li class="carousel-slide">
+        <div class="carousel-snapper" style="background-image: url('images/lounge.jpg')"></div>
+      </li>
+    </ol>
+  </section>
+</section>
+
+<!-- Galería de Imágenes -->
+<section class="gallery-section">
+  <h2 class="section-title">Galería de Momentos</h2>
+  <p class="section-description">Explora los espacios y momentos que hacen único a nuestro hotel.</p>
+  
+  <article class="gallery">
+    <img src="images/room1.jpg" alt="Habitación Deluxe" />
+    <blockquote class="quote spacer">
+      <span>"El lujo debe ser confortable, de lo contrario no es lujo."</span>
+      <cite>&mdash;Coco Chanel</cite>
+    </blockquote>
+    <img src="images/lobby.jpg" alt="Lobby Principal" />
+    <img src="images/view.jpg" alt="Vista Panorámica" />
+    <img src="images/suite.jpg" alt="Suite Ejecutiva" />
+    <img src="images/dining.jpg" alt="Área de Comedor" />
+    <div class="spacer"></div>
+    <img src="images/pool-night.jpg" alt="Piscina de Noche" />
+    <img src="images/bar-lounge.jpg" alt="Bar Lounge" />
+    <img src="images/spa-treatment.jpg" alt="Tratamiento Spa" />
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <img src="images/breakfast.jpg" alt="Desayuno Gourmet" />
+    <img src="images/garden.jpg" alt="Jardín Zen" />
+    <img src="images/terrace.jpg" alt="Terraza" />
+    <div class="spacer"></div>
+    <img src="images/event-hall.jpg" alt="Salón de Eventos" />
+    <img src="images/sunset.jpg" alt="Vista al Atardecer" />
+  </article>
+</section>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Sobre Hotel V1538</h3>
+      <p>Un oasis de lujo y confort en el corazón de la ciudad. Ofrecemos una experiencia única con servicios de primera clase y atención personalizada.</p>
+    </div>
+    <div class="footer-section">
+      <h3>Enlaces Rápidos</h3>
+      <ul>
+        <li><a href="#habitaciones">Habitaciones</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#restaurante">Restaurante</a></li>
+        <li><a href="#reservas">Reservas</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Contacto</h3>
+      <ul>
+        <li>📍 Av. Principal 1538</li>
+        <li>📞 +1 234 567 890</li>
+        <li>✉️ info@hotelv1538.com</li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Síguenos</h3>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Hotel V1538. Todos los derechos reservados.</p>
+  </div>
+</footer>
+  <script>
+    // Script para el carrusel circular
+    document.addEventListener('DOMContentLoaded', function() {
+      const viewport = document.querySelector('.carousel-viewport');
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+    
+      viewport.addEventListener('mousedown', (e) => {
+        isDown = true;
+        viewport.style.cursor = 'grabbing';
+        startX = e.pageX - viewport.offsetLeft;
+        scrollLeft = viewport.scrollLeft;
+      });
+    
+      viewport.addEventListener('mouseleave', () => {
+        isDown = false;
+        viewport.style.cursor = 'grab';
+      });
+    
+      viewport.addEventListener('mouseup', () => {
+        isDown = false;
+        viewport.style.cursor = 'grab';
+      });
+    
+      viewport.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - viewport.offsetLeft;
+        const walk = (x - startX) * 2;
+        viewport.scrollLeft = scrollLeft - walk;
+      });
+    });
+    
+    // Script para el primer carrusel
+    const autoSlide = () => {
+      const inputs = document.querySelectorAll('.carousel-controls input');
+      let currentIndex = 0;
+      
+      inputs.forEach((input, index) => {
+        if (input.checked) currentIndex = index;
+      });
+      
+      currentIndex = (currentIndex + 1) % inputs.length;
+      inputs[currentIndex].checked = true;
+    };
+    
+    setInterval(autoSlide, 5000); // Cambiar imagen cada 5 segundos
+    </script>
+</body>
+</html>

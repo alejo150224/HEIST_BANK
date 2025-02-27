@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HEIST BANK - Servicios</title>
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- Material Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  
+  <style>
+    @font-face {
+      font-family: titulo1;
+      src: url("fonts/Quicksilver.ttf");
+    }
+    /* RESET / BASE */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Fondo degradado (Heist Bank) */
+    body {
+      background: linear-gradient(135deg, #000000, #2D3436);
+      color: #fff;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    header {
+      width: 100%;
+      padding: 20px 30px;
+      background: linear-gradient(135deg, #000000, #2D3436);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo img {
+      height: 40px;
+      cursor: pointer;
+      display: block;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #bbb;
+    }
+
+    /* CONTENEDOR HERO */
+    /* Contenedor principal */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden; 
+      padding: 40px 20px;
+    }
+
+    /* Franjas diagonales */
+    .stripe-1, .stripe-2 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200%;
+      height: 40px;
+      background: linear-gradient(135deg, #20A4F3, #182B3A);
+      transform-origin: center;
+      opacity: 0.8;
+      z-index: 1;
+    }
+    .stripe-1 { transform: translate(-50%, -50%) rotate(12deg); }
+    .stripe-2 { transform: translate(-50%, -50%) rotate(12deg); top: 55%; }
+    
+
+    /* Subtítulo (pequeño texto) */
+    .subtitle {
+      position: relative;
+      z-index: 2;
+      font-size: 1rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 10px;
+    }
+
+    /* CONTENEDOR PARA LAS CAPAS (títulos + imagen) */
+    .title-container {
+      position: relative;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    /* TÍTULO RELLENO (fondo) */
+    .main-title, .outline-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, 59%);
+      margin: 0;
+      font-size: 15rem;
+      font-weight: 900;
+      letter-spacing: 0.01em;
+      line-height: 0.9;
+      z-index: 1;
+      font-family: titulo1;
+    }
+
+    /* IMAGEN */
+    .dog-image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -39%);
+      z-index: 2;
+      width: 550px;
+    }
+
+    /* TÍTULO CONTORNO (encima) */
+    .outline-title {
+      color: transparent;
+      -webkit-text-stroke: 2px #fff;
+      z-index: 3;
+      pointer-events: none;
+    }
+    
+    /* BOTÓN CTA */
+    .cta-button {
+      position: relative;
+      z-index: 4;
+      display: inline-block;
+      background: #fff;
+      color: #333;
+      padding: 14px 28px;
+      border-radius: 28px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      text-decoration: none;
+      margin-top: 390px;
+    }
+    .cta-button:hover { background: #ffc600; transform: scale(1.05); color: #000; }
+
+    /* SECCIONES de contenido */
+    section {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    section p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #ddd;
+      margin-bottom: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    /* Bloque de servicio (texto + imagen) */
+    .service-block {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .service-block .service-text {
+      flex: 1;
+      min-width: 280px;
+      max-width: 500px;
+    }
+
+    .service-block .service-text h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: left;
+    }
+
+    .service-block .service-text p {
+      text-align: left;
+    }
+
+    .service-block img {
+      flex: 1;
+      min-width: 280px;
+      max-width: 500px;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    /* SWIPER STYLES */
+    .creative-showcase--slider {
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper-slide {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      min-height: 100vh;
+      padding: 80px 0;
+    }
+
+    .slide-bg {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .slide-bg:before {
+      opacity: 0.8;
+      background: #1d1d1d;
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .swiper-slide .slide-bg .slide-container {
+      max-width: 1320px;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 7;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .slide-bg .slide-container .slide-row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .slide-container .slide-row .slider-content {
+      flex: 0 0 auto;
+      width: 91.66666667%;
+      margin-left: 8.33333333%;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .slider-content p {
+      font-size: 18px;
+      opacity: 0.65;
+      line-height: 1.6;
+      max-width: 760px;
+    }
+
+    .slider-content h3 {
+      font-size: 24px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #fff;
+      opacity: 0.5;
+      font-weight: 500;
+      line-height: 1.3;
+      margin-bottom: 30px;
+      margin-top: 0px;
+    }
+
+    .slider-content h2 {
+      font-size: 50px;
+      color: #fff;
+      margin: 0px;
+      font-weight: 500;
+      line-height: 1.3;
+      margin-bottom: 0.2rem;
+    }
+
+    .swiper-pagination {
+      scale: 2.5;
+      bottom: 60px !important;
+      left: 50%;
+      transform: translateX(-50%);
+      width: auto;
+    }
+
+    .swiper-pagination-bullet {
+      background: #f9f9f9 !important;
+    }
+
+    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+      background: #f9f9f9 !important;
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      .main-title,
+      .outline-title {
+        font-size: 5rem;
+      }
+      .dog-image {
+        width: 220px;
+      }
+      .service-block {
+        flex-direction: column;
+      }
+      .service-block .service-text {
+        text-align: center;
+      }
+      .service-block .service-text p {
+        text-align: center;
+      }
+      .slider-content h2 {
+        font-size: 36px;
+      }
+      .slider-content h3 {
+        font-size: 18px;
+      }
+      .slider-content p {
+        font-size: 16px;
+      }
+    }
+
+    /* Estilos del Footer */
+    footer {
+      position: relative; /* Cambiado de fixed a relative */
+      left: 0;
+      bottom: 0;
+      right: 0;
+      padding-bottom: 20px;
+      background: #000000;
+      color: #f9f9f9;
+      margin-top: 50px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    footer article {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      margin: -90px auto 10px;
+      min-height: 180px;
+      width: 70vw;
+      padding: 20px 30px 40px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #20A4F3, #182B3A); /* Adaptado a los colores del banco */
+    }
+
+    footer article h2 {
+      font-size: 22px;
+      font-weight: 400;
+      text-align: center;
+      color: rgb(255 255 255 / 86%);
+    }
+
+    footer article button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 24px;
+      background: #ffffff;
+      border: 0;
+      border-radius: 30px;
+      white-space: nowrap;
+      color: #000000;
+      font-family: inherit;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    footer article button:hover {
+      background: #ffc600;
+      transform: scale(1.05);
+    }
+
+    footer section {
+      padding: 30px 80px 0;
+      position: relative;
+      margin-bottom: 50px;
+    }
+
+    footer section img {
+      display: block;
+      height: 32px;
+      margin: 0 auto 30px;
+    }
+
+    footer section h3 {
+      color: rgb(255 255 255 / 40%);
+      font-weight: 400;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    footer section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 30px;
+      grid-template-columns: repeat(2, 1fr);
+      place-items: center;
+      text-align: center;
+    }
+
+    footer section ul li a {
+      display: block;
+      margin-bottom: 10px;
+      color: rgb(255 255 255 / 90%);
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    footer section ul li a:hover {
+      color: #20A4F3;
+    }
+
+    .socials {
+      position: absolute;
+      left: 50%;
+      bottom: -60px;
+      translate: -50% 0;
+      display: flex;
+      gap: 24px;
+      font-size: 20px;
+      color: rgb(255 255 255 / 40%);
+    }
+
+    .socials a {
+      color: rgb(255 255 255 / 40%);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .socials a:hover {
+      color: #20A4F3;
+    }
+
+    @media (width > 530px) {
+      footer article {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 30px 40px;
+        margin: -70px 40px 20px;
+        min-height: 140px;
+        width: auto;
+      }
+
+      footer article h2 {
+        font-size: 24px;
+      }
+
+      footer section ul {
+        grid-template-columns: repeat(4, 1fr);
+        padding-right: 0;
+        place-items: start;
+        text-align: left;
+      }
+
+      .socials {
+        top: 37px;
+        left: 216px;
+        bottom: auto;
+        font-size: 18px;
+        gap: 3vw;
+        translate: 0;
+        padding-left: 24px;
+        border-left: 1px solid rgb(255 255 255 / 20%);
+      }
+    }
+
+    @media (max-width: 768px) {
+      footer section {
+        padding: 30px 20px 0;
+      }
+      
+      footer article {
+        width: 90vw;
+        margin: -70px auto 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo Heist Bank">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="hoteles.html">Hoteles</a></li>
+        <li><a href="reservas.html">Reservas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO de SERVICIOS -->
+  <section class="hero">
+    <!-- Franjas diagonales -->
+    <div class="stripe-1"></div>
+    <div class="stripe-2"></div>
+
+    <!-- CONTENEDOR TÍTULOS + IMAGEN -->
+    <div class="title-container">
+      <h1 class="main-title">SERVICIOS</h1>
+      <img class="dog-image" src="images/edificio2.png" alt="Imagen de servicio" />
+      <h1 class="outline-title">SERVICIOS</h1>
+    </div>
+
+    <!-- Botón CTA -->
+    <a href="#services-carousel" class="cta-button">Conocer más</a>
+  </section>
+
+  <!-- Carousel Section -->
+  <section id="services-carousel" class="creative-showcase--slider">
+    <div class="banner-horizental">
+      <div class="swiper swiper-container-h">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div
+              class="slide-bg overlay-dark"
+              style="background-image: url(images/personale.webp)"
+              data-swiper-parallax="1152"
+            >
+              <div class="slide-container">
+                <div class="slide-row">
+                  <div class="slider-content">
+                    <h3 class="slide-subtitle" data-swiper-parallax="-500">
+                      HEIST BANK
+                    </h3>
+                    <h2 class="slide-heading" data-swiper-parallax="-1000">
+                      <span>Cuentas Personales</span>
+                    </h2>
+                    <p data-swiper-parallax="-1500">
+                      Nuestras cuentas personales ofrecen seguridad máxima, acceso global y gestión financiera exclusiva para satisfacer sus necesidades bancarias.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div
+              class="slide-bg"
+              style="background-image: url(images/inversiones.webp)"
+              data-swiper-parallax="1152"
+            >
+              <div class="slide-container">
+                <div class="slide-row">
+                  <div class="slider-content">
+                    <h3 class="slide-subtitle" data-swiper-parallax="-500">
+                      HEIST BANK
+                    </h3>
+                    <h2 class="slide-heading" data-swiper-parallax="-1000">
+                      <span>Inversiones Premium</span>
+                    </h2>
+                    <p data-swiper-parallax="-1500">
+                      Nuestros servicios de inversión están diseñados para maximizar su capital con estrategias personalizadas y oportunidades exclusivas.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div
+              class="slide-bg"
+              style="background-image: url(images/corporativa.webp)"
+              data-swiper-parallax="1152"
+            >
+              <div class="slide-container">
+                <div class="slide-row">
+                  <div class="slider-content">
+                    <h3 class="slide-subtitle" data-swiper-parallax="-500">
+                      HEIST BANK
+                    </h3>
+                    <h2 class="slide-heading" data-swiper-parallax="-1000">
+                      <span>Banca Corporativa</span>
+                    </h2>
+                    <p data-swiper-parallax="-1500">
+                      Soluciones financieras adaptadas a empresas de todos los tamaños, con servicios especializados y atención personalizada para impulsar su negocio.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div
+              class="slide-bg"
+              style="background-image: url(images/asesoria.webp)"
+              data-swiper-parallax="1152"
+            >
+              <div class="slide-container">
+                <div class="slide-row">
+                  <div class="slider-content">
+                    <h3 class="slide-subtitle" data-swiper-parallax="-500">
+                      HEIST BANK
+                    </h3>
+                    <h2 class="slide-heading" data-swiper-parallax="-1000">
+                      <span>Asesoría Financiera</span>
+                    </h2>
+                    <p data-swiper-parallax="-1500">
+                      Nuestros expertos financieros le ayudarán a tomar decisiones informadas para optimizar su patrimonio y asegurar su futuro económico.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div
+              class="slide-bg"
+              style="background-image: url(images/internacional.webp)"
+              data-swiper-parallax="1152"
+            >
+              <div class="slide-container">
+                <div class="slide-row">
+                  <div class="slider-content">
+                    <h3 class="slide-subtitle" data-swiper-parallax="-500">
+                      HEIST BANK
+                    </h3>
+                    <h2 class="slide-heading" data-swiper-parallax="-1000">
+                      <span>Servicios Internacionales</span>
+                    </h2>
+                    <p data-swiper-parallax="-1500">
+                      Operaciones globales sin fronteras, con tipos de cambio preferentes y una red mundial de contactos para sus negocios internacionales.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <article>
+        <h2>Comienza tu futuro financiero hoy</h2>
+        <button>
+          <p>Abrir cuenta</p>
+          <span class="material-symbols-outlined">trending_flat</span>
+        </button>
+      </article>
+      <section>
+        <img src="images/logo.png" alt="HEIST BANK Logo" />
+        <div class="socials">
+          <a href="#" class="fa-brands fa-instagram"></a>
+          <a href="#" class="fa-brands fa-facebook"></a>
+          <a href="#" class="fa-brands fa-linkedin"></a>
+          <a href="#" class="fa-brands fa-twitter"></a>
+          <a href="#" class="fa-brands fa-youtube"></a>
+        </div>
+        <ul>
+          <li>
+            <h3>Servicios</h3>
+            <a>Cuentas</a>
+            <a>Inversiones</a>
+            <a>Préstamos</a>
+            <a>Seguros</a>
+          </li>
+          <li>
+            <h3>Atención</h3>
+            <a>Sucursales</a>
+            <a>Soporte 24/7</a>
+            <a>FAQ</a>
+            <a>Contacto</a>
+          </li>
+          <li>
+            <h3>Legal</h3>
+            <a>Términos</a>
+            <a>Privacidad</a>
+            <a>Seguridad</a>
+            <a>Compliance</a>
+          </li>
+          <li>
+            <h3>Nosotros</h3>
+            <a>Historia</a>
+            <a>Carreras</a>
+            <a>Prensa</a>
+            <a>Sustentabilidad</a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper(".swiper", {
+      speed: 750,
+      parallax: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      mousewheel: true,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+  </script>
+</body>
+</html>

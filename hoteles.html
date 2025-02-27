@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HEIST BANK - Convenios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    @font-face {
+      font-family: titulo1;
+      src: url("fonts/Quicksilver.ttf");
+    }
+    @font-face {
+      font-family: titulo2;
+      src: url("fonts/SIMPLIFICA Typeface.ttf");
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Arial", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #000000, #2D3436);
+      color: #fff;
+    }
+
+    header {
+      width: 100%;
+      padding: 20px 30px;
+      background: linear-gradient(135deg, #000000, #2D3436);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo img {
+      height: 40px;
+      cursor: pointer;
+      display: block;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #bbb;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .circle-bg {
+      position: absolute;
+      width: 650px;
+      height: 650px;
+      background: linear-gradient(135deg, #20A4F3, #009FC2);
+      border-radius: 70%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.15;
+      z-index: 1;
+    }
+
+    .title-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .subtitle {
+      position: absolute;
+      top: -20%; 
+      left: 50%;
+      transform: translate(-50%, 0);
+      z-index: 4;
+      font-size: 38px;
+      color: #fff;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: titulo2;
+    }
+
+    .main-title {
+      font-size: 6rem;
+      font-family: titulo1;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 15px;
+      box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.2);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .info-section {
+      max-width: 1200px;
+      margin: 100px auto 50px;
+      padding: 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .info-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .info-text h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      font-family: titulo2;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .info-text p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #ddd;
+      margin-bottom: 20px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 14px 24px;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.3s;
+      border-radius: 6px;
+      position: relative;
+      z-index: 4;
+    }
+
+    .cta-button:hover {
+      background-color: #000;
+      transform: scale(1.05);
+    }
+
+    /* Footer Styles */
+    .footer {
+      background: linear-gradient(135deg, #000000, #1a1a1a);
+      color: #fff;
+      padding: 60px 0 20px;
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      padding: 0 20px;
+    }
+
+    .footer-section h3 {
+      font-family: titulo2;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(135deg, #20A4F3, #009FC2);
+    }
+
+    .footer-section p {
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-section ul li a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section ul li a:hover {
+      color: #20A4F3;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: #20A4F3;
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 40px;
+      margin-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-bottom p {
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+      }
+      
+      .footer-section {
+        text-align: center;
+      }
+      
+      .footer-section h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .social-links {
+        justify-content: center;
+      }
+    }
+
+    /* Carousel Styles */
+    .carousel-section {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .carousel-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-family: titulo2;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .carousel-section p {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      color: #ddd;
+      line-height: 1.6;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 50vw;
+      max-height: 400px;
+      perspective: 100px;
+      overflow: hidden;
+      cursor: grab;
+      border-radius: 15px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .viewport {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      overflow-x: scroll;
+      counter-reset: item;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+    }
+
+    .carousel::before,
+    .carousel::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      translate: -50% 0;
+      width: 500%;
+      height: 500%;
+      border-radius: 50%;
+      background: var(--color-bg, #16181b);
+    }
+
+    .carousel::before {
+      top: -480%;
+    }
+
+    .carousel::after {
+      bottom: -480%;
+    }
+
+    .slide {
+      position: relative;
+      flex: 0 0 33.33%;
+      width: 33.33%;
+      counter-increment: item;
+    }
+
+    .slide:before {
+      content: counter(item);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -40%, 70px);
+      color: #fff;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .snapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      scroll-snap-align: center;
+      background-size: cover;
+      background-position: 50%;
+      border: 10px solid var(--color-bg, #16181b);
+    }
+
+    * {
+      box-sizing: border-box;
+      scrollbar-color: transparent transparent; /* thumb and track color */
+      scrollbar-width: 0px;
+    }
+
+    *::-webkit-scrollbar {
+      width: 0;
+    }
+
+    *::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background: transparent;
+      border: none;
+    }
+
+    * {
+      -ms-overflow-style: none;
+    }
+
+    ol, li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .carousel-title {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .carousel-description {
+      font-size: 0.9rem;
+      color: #ddd;
+      margin-top: 10px;
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* First Accordion Styles */
+    .team-section {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .team-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-family: titulo2;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .team-section p {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      color: #ddd;
+      line-height: 1.6;
+    }
+
+    .team-accordion {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      height: 400px;
+      gap: 16px;
+      transition: 0.3s;
+      margin: 0 auto;
+    }
+
+    .team-accordion:hover {
+      gap: 0;
+    }
+
+    .team-accordion li {
+      position: relative;
+      overflow: hidden;
+      flex: 0 0 80px;
+      border-radius: 50px;
+      opacity: 0.75;
+      cursor: pointer;
+    }
+
+    .team-accordion li img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.5);
+    }
+
+    .team-accordion li,
+    .team-accordion li img,
+    .team-accordion li .team-content,
+    .team-accordion li .team-content span {
+      transition: 0.3s;
+    }
+
+    .team-accordion h2 {
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 45px;
+      border-bottom: 2px solid #fff;
+      margin-bottom: 10px;
+      white-space: nowrap;
+    }
+
+    .team-accordion li .team-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      color: #fff;
+      padding: 15px;
+      background: #02022e;
+      background: linear-gradient(
+        0deg,
+        rgb(0 0 0 / 70%) 10%,
+        rgb(255 255 255 / 0%) 100%
+      );
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .team-accordion li .team-content span {
+      position: absolute;
+      z-index: 3;
+      left: 50%;
+      bottom: 50px;
+      translate: -50%;
+      scale: 0.85;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .team-accordion li:hover {
+      flex: 0 1 260px;
+      scale: 1.1;
+      z-index: 10;
+      opacity: 1;
+    }
+
+    .team-accordion li:hover .team-content {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .team-accordion li:hover span {
+      scale: 1;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Second Accordion Styles */
+    .services-section {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .services-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-family: titulo2;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .services-section p {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      color: #ddd;
+      line-height: 1.6;
+    }
+
+    .services-accordion {
+      position: relative;
+      display: flex;
+      cursor: pointer;
+      width: 100%;
+      height: 90vw;
+      max-height: 600px;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .services-accordion-item {
+      position: relative;
+      overflow: hidden;
+      width: 10%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      opacity: 0.5;
+      border: 0;
+      background: transparent;
+      font-family: inherit;
+      cursor: pointer;
+      transition: 0.5s;
+      text-align: left;
+    }
+
+    .services-accordion-item:hover {
+      opacity: 0.75;
+    }
+
+    .services-accordion :is(h2, p) {
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    .services-accordion-item h2 {
+      font-size: clamp(12px, 4vw, 24px);
+      font-weight: 400;
+      color: rgb(255 255 255 / 96%);
+    }
+
+    .services-accordion-item p {
+      font-size: clamp(10px, 2vw, 14px);
+      color: rgb(255 255 255 / 66%);
+    }
+
+    .services-accordion-item.active {
+      width: 60%;
+      opacity: 1;
+    }
+
+    .services-accordion-item .material-symbols-outlined {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      min-width: 44px;
+      height: 44px;
+      color: rgb(0 0 0 / 80%);
+      background: rgb(255 255 255 / 70%);
+      border-radius: 50%;
+      font-size: 28px;
+    }
+
+    .services-accordion-item .services-content {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      border-radius: 60px;
+      z-index: 1;
+      opacity: 0;
+      visibility: hidden;
+      padding: 20px 30px 20px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: linear-gradient(to bottom, rgb(0 0 0 / 0%), rgb(0 0 0 / 25%));
+      backdrop-filter: blur(10px);
+      transition: 0.25s;
+    }
+
+    .services-accordion-item.active .services-content {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .services-accordion-item img {
+      position: absolute;
+      z-index: 0;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      height: 100%;
+      width: 70vw;
+      object-fit: cover;
+      filter: grayscale(0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo Heist Bank">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="hoteles.html">Hoteles</a></li>
+        <li><a href="reservas.html">Reservas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="circle-bg"></div>
+    <div class="title-container">
+      <div class="subtitle">Todo lo que necesitas</div>
+      <h1 class="main-title">Convenios</h1>
+      <img src="images/hotel_v1538.jpg" alt="Hotel V1538">
+      <a class="cta-button" href="reservas.html">Conocelos</a>
+    </div>
+  </section>
+
+  <!-- Carousel Section -->
+  <section class="carousel-section">
+    <h2>Nuestros Aliados Estratégicos</h2>
+    <p>Descubre los beneficios exclusivos que HEIST BANK te ofrece a través de nuestros convenios con las mejores marcas y servicios a nivel internacional.</p>
+    
+    <div class="carousel">
+      <ol class="viewport" tabindex="1">
+        <li class="slide">
+          <div class="snapper" style="background-image: url('images/convenio1.jpg')"></div>
+        </li>
+        <li class="slide">
+          <div class="snapper" style="background-image: url('images/convenio2.jpg')"></div>
+        </li>
+        <li class="slide">
+          <div class="snapper" style="background-image: url('images/convenio3.jpg')"></div>
+        </li>
+        <li class="slide">
+          <div class="snapper" style="background-image: url('images/convenio4.jpg')"></div>
+        </li>
+        <li class="slide">
+          <div class="snapper" style="background-image: url('images/convenio5.jpg')"></div>
+        </li>
+        <li class="slide">
+          <div class="snapper" style="background-image: url('images/convenio6.jpg')"></div>
+        </li>
+        <li class="slide">
+          <div class="snapper" style="background-image: url('images/convenio7.jpg')"></div>
+        </li>
+      </ol>
+    </div>
+    
+    <div class="carousel-title">Desliza para explorar todos nuestros convenios</div>
+    <div class="carousel-description">Nuestros convenios te brindan acceso a descuentos exclusivos, beneficios premium y experiencias únicas con nuestros socios estratégicos alrededor del mundo.</div>
+  </section>
+
+  <section class="info-section">
+    <div class="info-text">
+      <h2>Sobre V1538</h2>
+      <p>
+        Vive una experiencia inolvidable en Hotel V1538, donde el lujo y la comodidad se fusionan.
+        Habitaciones de primer nivel, gastronomía de alta cocina y un servicio excepcional.
+      </p>
+    </div>
+  </section>
+
+  <!-- First Accordion Section - Team -->
+  <section class="team-section">
+    <h2>Nuestro Equipo Ejecutivo</h2>
+    <p>Conoce a los profesionales que hacen posible nuestros convenios exclusivos y garantizan la mejor experiencia para nuestros clientes.</p>
+    
+    <ul class="team-accordion">
+      <li>
+        <img src="images/ejecutivo1.jpg" />
+        <div class="team-content">
+          <span>
+            <h2>Alexis Rios</h2>
+            <p>Director de Convenios</p>
+          </span>
+        </div>
+      </li>
+      <li>
+        <img src="images/ejecutivo2.jpg" />
+        <div class="team-content">
+          <span>
+            <h2>Liam Scott</h2>
+            <p>Gerente de Alianzas</p>
+          </span>
+        </div>
+      </li>
+      <li>
+        <img src="images/ejecutivo3.jpg" />
+        <div class="team-content">
+          <span>
+            <h2>Pavel Dvorak</h2>
+            <p>Coordinador Internacional</p>
+          </span>
+        </div>
+      </li>
+      <li>
+        <img src="images/ejecutivo4.jpg" />
+        <div class="team-content">
+          <span>
+            <h2>Kelly Cox</h2>
+            <p>Directora de Experiencia</p>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Second Accordion Section - Services -->
+  <section class="services-section">
+    <h2>Servicios Exclusivos</h2>
+    <p>Explora nuestra gama de servicios premium disponibles a través de nuestros convenios internacionales.</p>
+    
+    <section class="services-accordion">
+      <button class="services-accordion-item" onClick="handleServicesClick(this, 0)">
+        <img src="images/asesoria.webp" />
+        <div class="services-content">
+          <span class="material-symbols-outlined">photo_camera</span>
+          <div>
+            <h2>Asesoría Financiera</h2>
+            <p>Servicios personalizados</p>
+          </div>
+        </div>
+      </button>
+      <button class="services-accordion-item" onClick="handleServicesClick(this, 1)">
+        <img src="images/CORBATA.png" />
+        <div class="services-content">
+          <span class="material-symbols-outlined">photo_camera</span>
+          <div>
+            <h2>Servicios Ejecutivos</h2>
+            <p>Para profesionales</p>
+          </div>
+        </div>
+      </button>
+      <button class="services-accordion-item" onClick="handleServicesClick(this, 2)">
+        <img src="images/bancopri.webp" />
+        <div class="services-content">
+          <span class="material-symbols-outlined">photo_camera</span>
+          <div>
+            <h2>Banca Premium</h2>
+            <p>Beneficios exclusivos</p>
+          </div>
+        </div>
+      </button>
+      <button class="services-accordion-item" onClick="handleServicesClick(this, 3)">
+        <img src="images/viajes.jpg" />
+        <div class="services-content">
+          <span class="material-symbols-outlined">photo_camera</span>
+          <div>
+            <h2>Viajes Internacionales</h2>
+            <p>Destinos exclusivos</p>
+          </div>
+        </div>
+      </button>
+      <button class="services-accordion-item" onClick="handleServicesClick(this, 4)">
+        <img src="images/shopping.jpg" />
+        <div class="services-content">
+          <span class="material-symbols-outlined">photo_camera</span>
+          <div>
+            <h2>Shopping Premium</h2>
+            <p>Descuentos especiales</p>
+          </div>
+        </div>
+      </button>
+    </section>
+  </section>
+
+  <footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Sobre Nosotros</h3>
+      <p>HEIST BANK es una institución financiera líder comprometida con la excelencia y la innovación en servicios bancarios internacionales.</p>
+    </div>
+    <div class="footer-section">
+      <h3>Enlaces Rápidos</h3>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#convenios">Convenios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Contacto</h3>
+      <ul>
+        <li>📍 Av. Principal 123</li>
+        <li>📞 +1 234 567 890</li>
+        <li>✉️ info@heistbank.com</li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Síguenos</h3>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 HEIST BANK. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+  <script>
+    // Carousel Script
+    document.addEventListener('DOMContentLoaded', function() {
+      const viewport = document.querySelector('.viewport');
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      viewport.addEventListener('mousedown', (e) => {
+        isDown = true;
+        viewport.style.cursor = 'grabbing';
+        startX = e.pageX - viewport.offsetLeft;
+        scrollLeft = viewport.scrollLeft;
+      });
+
+      viewport.addEventListener('mouseleave', () => {
+        isDown = false;
+        viewport.style.cursor = 'grab';
+      });
+
+      viewport.addEventListener('mouseup', () => {
+        isDown = false;
+        viewport.style.cursor = 'grab';
+      });
+
+      viewport.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - viewport.offsetLeft;
+        const walk = (x - startX) * 2; // Scroll speed
+        viewport.scrollLeft = scrollLeft - walk;
+      });
+
+      // Services Accordion Script
+      const servicesItems = document.querySelectorAll(".services-accordion-item");
+
+      const resetServicesItems = () => {
+        servicesItems.forEach((item) => item.classList.remove("active"));
+      };
+
+      window.handleServicesClick = (element, index) => {
+        resetServicesItems();
+        element.classList.add("active");
+        localStorage.setItem("servicesAccordionIndex", index);
+      };
+
+      resetServicesItems();
+
+      const activeServicesItem = servicesItems[localStorage.getItem("servicesAccordionIndex")];
+
+      if (activeServicesItem) {
+        activeServicesItem.classList.add("active");
+      } else {
+        servicesItems[0].classList.add("active");
+      }
+    });
+  </script>
+
+</body>
+</html>
+
